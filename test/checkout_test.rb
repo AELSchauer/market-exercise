@@ -43,4 +43,12 @@ class CheckoutTest < Minitest::Test
 
     assert_equal checkout.cart.length, 0
   end
+
+  def test_total_one_item
+    checkout = Checkout.new
+
+    checkout.scan(:CH1)
+
+    assert_equal checkout.total, 11.23
+  end
 end

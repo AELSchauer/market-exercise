@@ -15,6 +15,12 @@ class Checkout
   end
 
   def scan(item)
-    cart << item unless products.find(item).nil?
+    cart << {code: item, type: :product} unless products.find(item).nil?
+  end
+
+  def total
+    specials = Specials.new(cart)
+    cart = specials.check_all(cart)
+    cart
   end
 end
