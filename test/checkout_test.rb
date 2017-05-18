@@ -12,7 +12,9 @@ class CheckoutTest < Minitest::Test
   def test_product_prices
     checkout = Checkout.new
 
-    assert_equal checkout.products[:CH1][:name], 'Chai'
+    ch1 = checkout.products.find(:CH1)
+
+    assert_equal ch1.name, 'Chai'
   end
 
   def test_scan_with_valid_item
