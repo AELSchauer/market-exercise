@@ -31,4 +31,19 @@ class Specials
       end
     end
   end
+
+  def chai_and_milk
+    chai = false
+    milk = false
+    i = 0
+    while i < @cart.length
+      chai = true if cart[i][:code] == :CH1
+      milk = true if cart[i][:code] == :MK1
+      if chai && milk
+        @cart.insert(i + 1, {code: :CHMK, type: :special})
+        i = @cart.length
+      end
+      i += 1
+    end
+  end
 end
