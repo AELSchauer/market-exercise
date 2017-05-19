@@ -32,10 +32,10 @@ class SpecialsTest < Minitest::Test
     specials_3 = Specials.new(Array.new(3, :AP1))
     specials_4 = Specials.new(Array.new(4, :AP1))
 
-    specials_1.:AP1
-    specials_2.:AP1
-    specials_3.:AP1
-    specials_4.:AP1
+    specials_1.apple
+    specials_2.apple
+    specials_3.apple
+    specials_4.apple
 
     assert_equal 0, code_count(specials_1.cart, :APPL)
     assert_equal 0, code_count(specials_2.cart, :APPL)
@@ -67,10 +67,10 @@ class SpecialsTest < Minitest::Test
   end
 
   def code_count(cart, code)
-    cart.count{ |item| item[:code] == code }
+    cart.count{ |item| item == code }
   end
 
   def code_index(cart, code)
-    cart.find_index{ |item| item[:code] == :CHMK }
+    cart.find_index{ |item| item == :CHMK }
   end
 end
