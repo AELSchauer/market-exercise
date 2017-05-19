@@ -23,7 +23,7 @@ class CheckoutTest < Minitest::Test
     checkout.scan(:CH1)
 
     assert_equal checkout.cart.length, 1
-    assert_equal checkout.cart[0][:code], :CH1
+    assert_equal checkout.cart[0], :CH1
   end
 
   def test_scan_with_valid_items
@@ -33,7 +33,7 @@ class CheckoutTest < Minitest::Test
     checkout.scan(:CH1)
 
     assert_equal checkout.cart.length, 2
-    assert_equal checkout.cart[1][:code], :CH1
+    assert_equal checkout.cart[1], :CH1
   end
 
   def test_scan_with_invalid_item

@@ -7,26 +7,26 @@ class Checkout
 
   def initialize
     @item_codes = Products.new({
-      CH1:  { name: 'Chai',            price: 3.11  },
-      AP1:  { name: 'Apples',          price: 6.00  },
-      CF1:  { name: 'Coffee',          price: 11.23 },
-      MK1:  { name: 'Milk',            price: 4.75  },
-      BOGO: { name: 'Buy One Get One', price: -11.23 },
-      APPL: { name: 'Buy 3+ Apples',   price: -1.50  },
-      CHMK: { name: 'Chai & Milk',     price: -4.75  },
+      CH1:  { name: 'Chai',            price: 3.11,   type: :product },
+      AP1:  { name: 'Apples',          price: 6.00,   type: :product },
+      CF1:  { name: 'Coffee',          price: 11.23,  type: :product },
+      MK1:  { name: 'Milk',            price: 4.75,   type: :product },
+      BOGO: { name: 'Buy One Get One', price: -11.23, type: :special },
+      APPL: { name: 'Buy 3+ Apples',   price: -1.50,  type: :special },
+      CHMK: { name: 'Chai & Milk',     price: -4.75,  type: :special },
     })
     @cart = []
   end
 
   def scan(item)
-    cart << {code: item, type: :product} unless item_codes.find(item).nil?
+    cart << item unless item_codes.find(item).nil?
   end
 
   def total
     specials = Specials.new(cart)
     specials.check_all
     specials.cart.reduce(0) do |sum, item|
-      sum += @item_codes.find(item[:code]).price
+      sum += @item_codes.find(item).price
     end.round(2)
   end
 end
