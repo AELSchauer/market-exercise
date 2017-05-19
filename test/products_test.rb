@@ -19,7 +19,7 @@ class ProductsTest < Minitest::Test
     assert_equal 11.23, cf1.price
   end
 
-  def test_products_product_code_invalid
+  def test_products_code_invalid
     products = Products.new({CF1: { name: 'Coffee', price: 11.23 }})
 
     assert_nil products.find(:AP1)

@@ -8,7 +8,7 @@ class Specials
   def check_all
     buy_one_get_one
     apple
-    @cart
+    chai_and_milk
   end
 
   def buy_one_get_one
